@@ -28,8 +28,8 @@
 
 			<p>
 				<a
-					href="https://github.com/greatnewslife/blava"
-					title="Check out the Blava repo"
+					href="https://blava.greatnews.life"
+					title="Check out the Blava docs"
 					class="text-blue-400"
 					target="_blank"
 				>
