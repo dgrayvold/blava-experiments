@@ -1,18 +1,24 @@
-# Static site template
+# Blava Experiments
 
-A simple static site template for rapid site development
+Various ideas & sketches using the [Blava](https://github.com/greatnewslife/blava) library from GreatNews.Life.
 
 ## Tools
 
 -   Vue 3 + Vite
 -   Windi CSS
--   Vite SSG
 -   Prettier
+-   Blava
 
 ## Getting started
 
 ```sh
-npm install
+pnpm i
 
-npm run dev
+pnpm dev
 ```
+
+## To contribute
+
+Duplicate the starter file at `/src/components/experiments/_ExperimentTemplate.vue`, changing the filename
+to the name of your experiment. Replace the `name` and `creator` properties in the exported object 
+with the relevant data. Once your experiment is built, open a pull request and I'll get back to you!
