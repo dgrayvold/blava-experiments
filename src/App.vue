@@ -172,7 +172,7 @@ export default {
 
 <style>
 * {
-	font-family: 'OverpassVariable';
+	font-family: 'Overpass Variable';
 }
 </style>
 
