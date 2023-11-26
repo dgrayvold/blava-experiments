@@ -77,10 +77,13 @@
 
 <script>
 const experiments = Object.values(
-	import.meta.globEager([
-		'./components/experiments/*.vue',
-		'!./components/experiments/_ExperimentTemplate.vue',
-	]),
+	import.meta.glob(
+		[
+			'./components/experiments/*.vue',
+			'!./components/experiments/_ExperimentTemplate.vue',
+		],
+		{ eager: true },
+	),
 );
 import Selector from '@/components/Selector.vue';
 import InfoPane from '@/components/InfoPane.vue';
