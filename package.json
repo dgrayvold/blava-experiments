@@ -7,19 +7,19 @@
 		"serve": "vite preview"
 	},
 	"dependencies": {
-		"@fontsource-variable/overpass": "^5.0.16",
-		"@headlessui/vue": "^1.7.16",
+		"@fontsource-variable/overpass": "^5.0.17",
+		"@headlessui/vue": "^1.7.17",
 		"blava": "^3.0.0",
-		"vue": "3.3.9"
+		"vue": "3.4.15"
 	},
 	"devDependencies": {
-		"@vitejs/plugin-vue": "4.5.0",
-		"@vue/server-renderer": "3.3.9",
+		"@vitejs/plugin-vue": "5.0.3",
+		"@vue/server-renderer": "3.4.15",
 		"@vueuse/head": "2.0.0",
 		"prettier": "2.8.8",
-		"vite": "5.0.2",
-		"vite-plugin-windicss": "1.9.2",
-		"vite-ssg": "0.23.5",
+		"vite": "5.0.12",
+		"vite-plugin-windicss": "1.9.3",
+		"vite-ssg": "0.23.6",
 		"vue-router": "4.2.5",
 		"windicss": "3.5.6"
 	}
