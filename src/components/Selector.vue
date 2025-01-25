@@ -30,14 +30,14 @@
 				<li
 					v-for="experiment in experiments"
 					:key="experiment.name"
-					class="text-xl hover:bg-blue-700"
+					class="text-xl"
 					:class="{
 						'bg-gradient-to-tr from-true-gray-800 to-true-gray-900 text-blue-500':
 							currentExperiment == experiment.name,
 					}"
 				>
 					<button
-						class="w-full h-full my-1 pl-4 py-1 text-left"
+						class="w-full h-full pl-4 pt-1.5 pb-1 text-left hover:bg-blue-700 focus-visible:bg-blue-700"
 						@click="selectExperiment(experiment.name)"
 					>
 						{{ experiment.name }}
