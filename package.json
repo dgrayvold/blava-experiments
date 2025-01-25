@@ -8,20 +8,19 @@
 		"serve": "vite preview"
 	},
 	"dependencies": {
-		"@fontsource-variable/overpass": "^5.1.1",
+		"@fontsource-variable/overpass": "^5.1.2",
 		"@headlessui/vue": "^1.7.23",
-		"@unocss/reset": "^0.63.4",
+		"@unocss/reset": "^65.4.3",
 		"blava": "^3.0.0",
-		"vue": "3.5.12"
+		"vue": "3.5.13"
 	},
 	"devDependencies": {
-		"@vitejs/plugin-vue": "5.1.4",
-		"@vue/server-renderer": "3.5.12",
+		"@vitejs/plugin-vue": "5.2.1",
+		"@vue/server-renderer": "3.5.13",
 		"@vueuse/head": "2.0.0",
 		"prettier": "2.8.8",
-		"unocss": "^0.63.4",
-		"vite": "5.4.9",
-		"vite-ssg": "0.23.8",
-		"vue-router": "4.4.5"
+		"unocss": "^65.4.3",
+		"vite": "6.0.11",
+		"vite-ssg": "25.0.0"
 	}
 }
