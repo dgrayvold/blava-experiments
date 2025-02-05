@@ -6,7 +6,7 @@
 	>
 		<DialogPanel>
 			<button
-				@click="triggerSelectorClose"
+				@click="$emit('close')"
 				class="block ml-auto mr-0 w-8 h-8 mr-4 my-4 z-50 !text-gray-500"
 				title="Close experiment selector"
 			>
@@ -38,7 +38,7 @@
 				>
 					<button
 						class="w-full h-full pl-4 pt-1.5 pb-1 text-left hover:bg-blue-700 focus-visible:bg-blue-700"
-						@click="selectExperiment(experiment.name)"
+						@click="$emit('select', experiment.name)"
 					>
 						{{ experiment.name }}
 						<div v-show="experiment.creator" class="text-sm">
@@ -51,65 +51,39 @@
 	</Dialog>
 </template>
 
-<script>
+<script setup>
 import { Dialog, DialogPanel } from '@headlessui/vue';
 
-export default {
-	components: {
-		Dialog,
-		DialogPanel,
+defineProps({
+	/**
+	 * The active experiment on display
+	 */
+	currentExperiment: {
+		type: String,
+		default: null,
 	},
 
-	props: {
-		/**
-		 * The active experiment on display
-		 */
-		currentExperiment: {
-			type: String,
-			default: null,
-		},
-
-		/**
-		 * The full list of experiments to choose from
-		 */
-		experiments: {
-			type: Array,
-			default: () => [],
-		},
-
-		/**
-		 * Whether the selector is active
-		 */
-		visible: {
-			type: Boolean,
-			default: false,
-		},
+	/**
+	 * The full list of experiments to choose from
+	 */
+	experiments: {
+		type: Array,
+		default: () => [],
 	},
 
-	emits: ['close', 'select'],
-
-	methods: {
-		/**
-		 * Choose an experiment to display
-		 *
-		 * @param {String} experiment The name of the experiment to make active
-		 */
-		selectExperiment(experiment) {
-			this.$emit('select', experiment);
-		},
-
-		/**
-		 * Close the selector
-		 */
-		triggerSelectorClose() {
-			this.$emit('close');
-		},
+	/**
+	 * Whether the selector is active
+	 */
+	visible: {
+		type: Boolean,
+		default: false,
 	},
-};
+});
+
+defineEmits(['close', 'select']);
 </script>
 
 <style lang="postcss" scoped>
-h1,
 button {
 	@apply text-gray-300;
 }

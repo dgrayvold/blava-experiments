@@ -75,7 +75,11 @@
 	<InfoPane :visible="infoPaneVisible" @close="infoPaneVisible = false" />
 </template>
 
-<script>
+<script setup>
+import { computed, ref } from 'vue';
+import Selector from '@/components/Selector.vue';
+import InfoPane from '@/components/InfoPane.vue';
+
 const experiments = Object.values(
 	import.meta.glob(
 		[
@@ -85,92 +89,74 @@ const experiments = Object.values(
 		{ eager: true },
 	),
 );
-import Selector from '@/components/Selector.vue';
-import InfoPane from '@/components/InfoPane.vue';
 
-export default {
-	components: {
-		...experiments,
-		Selector,
-		InfoPane,
-	},
+/**
+ * The experiment currently displayed
+ */
+const currentExperiment = ref(experiments[0].default.name);
 
-	data() {
+/**
+ * The names of all available experiments and their creators
+ */
+const experimentsData = computed(() => {
+	return experiments.map(experiment => {
 		return {
-			/**
-			 * The experiment currently displayed
-			 */
-			currentExperiment: experiments[0].default.name,
-
-			/**
-			 * The names of all available experiments and their creators
-			 */
-			experimentsData: experiments.map(experiment => {
-				return {
-					name: experiment.default.name,
-					creator:
-						experiment.default.creator == 'Daniel Grayvold'
-							? null
-							: experiment.default.creator,
-				};
-			}),
-
-			/**
-			 * Whether the info pane is currently active
-			 */
-			infoPaneVisible: false,
-
-			/**
-			 * Whether the experiment selector is currently active
-			 */
-			selectorVisible: false,
+			name: experiment.default.name,
+			creator:
+				experiment.default.creator == 'Daniel Grayvold'
+					? null
+					: experiment.default.creator,
 		};
-	},
+	});
+});
 
-	computed: {
-		/**
-		 * A map of the experiments with their names as keys
-		 */
-		experimentsMap() {
-			const result = new Map();
+/**
+ * Whether the info pane is currently active
+ */
+const infoPaneVisible = ref(false);
 
-			experiments.map(experiment =>
-				result.set(experiment.default.name, experiment.default),
-			);
+/**
+ * Whether the experiment selector is currently active
+ */
+const selectorVisible = ref(false);
 
-			return result;
-		},
+/**
+ * A map of the experiments with their names as keys
+ */
+const experimentsMap = computed(() => {
+	const result = new Map();
 
-		/**
-		 * The name of the current experiment's creator, or null if it's Daniel or not added
-		 */
-		currentExperimentCreator() {
-			const creator = experiments.find(
-				function (experiment) {
-					return experiment.default.name == this.currentExperiment;
-				}.bind(this),
-			).default.creator;
+	experiments.map(experiment =>
+		result.set(experiment.default.name, experiment.default),
+	);
 
-			if (creator === undefined || creator == 'Daniel Grayvold') {
-				return null;
-			}
+	return result;
+});
 
-			return creator;
-		},
-	},
+/**
+ * The name of the current experiment's creator, or null if it's Daniel or not added
+ */
+const currentExperimentCreator = computed(() => {
+	const creator = experiments.find(experiment => {
+		return experiment.default.name == currentExperiment.value;
+	}).default.creator;
 
-	methods: {
-		/**
-		 * Set the current experiment on display
-		 *
-		 * @param {String} experiment The name of the experiment to display
-		 */
-		setCurrentExperiment(experiment) {
-			this.currentExperiment = experiment;
-			this.selectorVisible = false;
-		},
-	},
-};
+	if (creator === undefined || creator == 'Daniel Grayvold') {
+		return null;
+	}
+
+	return creator;
+});
+
+/**
+ * Set the current experiment on display
+ *
+ * @param {String} experiment The name of the experiment to display
+ */
+function setCurrentExperiment(experiment) {
+	currentExperiment.value = experiment;
+	selectorVisible.value = false;
+}
 </script>
 
 <style>

@@ -7,7 +7,7 @@
 	>
 		<DialogPanel>
 			<button
-				@click="triggerPaneClose"
+				@click="$emit('close')"
 				class="block w-8 h-8 -ml-1 my-4 z-50 text-gray-500"
 				title="Close info pane"
 			>
@@ -24,9 +24,10 @@
 					/>
 				</svg>
 			</button>
+
 			<h2 class="text-2xl text-gray-100 mb-4">Blobby experiments</h2>
 
-			<p>
+			<p class="mb-4 text-gray-100">
 				<a
 					href="https://blava.greatnews.life"
 					title="Check out the Blava docs"
@@ -66,7 +67,7 @@
 				own projects!
 			</p>
 
-			<p>
+			<p class="mb-4 text-gray-100">
 				<a
 					href="https://github.com/dgrayvold/blava-experiments"
 					title="Submit your own Blava experiments on the GitHub repo"
@@ -80,40 +81,18 @@
 	</Dialog>
 </template>
 
-<script>
+<script setup>
 import { Dialog, DialogPanel } from '@headlessui/vue';
 
-export default {
-	components: {
-		Dialog,
-		DialogPanel,
+const props = defineProps({
+	/**
+	 * Whether the pane is active
+	 */
+	visible: {
+		type: Boolean,
+		default: false,
 	},
+});
 
-	props: {
-		/**
-		 * Whether the pane is active
-		 */
-		visible: {
-			type: Boolean,
-			default: false,
-		},
-	},
-
-	emits: ['close', 'select'],
-
-	methods: {
-		/**
-		 * Emit an event to close the pane
-		 */
-		triggerPaneClose() {
-			this.$emit('close');
-		},
-	},
-};
+defineEmits(['close', 'select']);
 </script>
-
-<style lang="postcss" scoped>
-p {
-	@apply mb-4 text-gray-100;
-}
-</style>

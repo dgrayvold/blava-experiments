@@ -1,22 +1,22 @@
 <template>
 	<canvas ref="blava" class="w-full h-full" />
 </template>
-<script>
+
+<script setup>
+import { onMounted, useTemplateRef } from 'vue';
 import { Blava } from 'blava';
 
-export default {
+defineOptions({
 	name: 'Experiment name here',
 	creator: 'Your name here',
+});
 
-	components: {
-		Blava,
-	},
+const blava = useTemplateRef('blava');
 
-	mounted() {
-		const b = new Blava(this.$refs.blava, {
-			// Your options here
-			// https://blava.greatnews.life for full list of config properties
-		});
-	},
-};
+onMounted(() => {
+	new Blava(blava.value, {
+		// Your options here
+		// https://blava.greatnews.life for full list of config properties
+	});
+});
 </script>
