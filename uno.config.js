@@ -1,12 +1,12 @@
 import {
 	defineConfig,
-	presetWind,
+	presetWind3,
 	presetAttributify,
 	transformerDirectives,
 } from 'unocss';
 
 export default defineConfig({
-	presets: [presetWind(), presetAttributify()],
+	presets: [presetWind3(), presetAttributify()],
 
 	transformers: [transformerDirectives()],
 
