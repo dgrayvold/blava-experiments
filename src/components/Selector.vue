@@ -24,7 +24,7 @@
 				</svg>
 			</button>
 
-			<h2 class="text-2xl mb-4 px-4">Choose experiment</h2>
+			<h2 class="text-white text-2xl mb-4 px-4">Choose experiment</h2>
 
 			<ul>
 				<li

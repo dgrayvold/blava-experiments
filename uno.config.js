@@ -1,12 +1,19 @@
 import {
 	defineConfig,
-	presetWind3,
+	presetWind4,
 	presetAttributify,
 	transformerDirectives,
 } from 'unocss';
 
 export default defineConfig({
-	presets: [presetWind3(), presetAttributify()],
+	presets: [
+		presetWind4({
+			preflights: {
+				reset: true,
+			},
+		}),
+		presetAttributify(),
+	],
 
 	transformers: [transformerDirectives()],
 
