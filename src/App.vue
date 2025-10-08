@@ -159,9 +159,13 @@ function setCurrentExperiment(experiment) {
 }
 </script>
 
-<style>
+<style lang="postcss">
 * {
 	font-family: 'Overpass Variable';
+}
+
+button {
+	@apply cursor-pointer;
 }
 </style>
 
