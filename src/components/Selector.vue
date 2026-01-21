@@ -1,6 +1,7 @@
 <template>
 	<Dialog
 		:open="visible"
+		@close="$emit('close')"
 		ref="dialog"
 		class="absolute top-0 left-0 h-screen w-screen lg:w-auto min-w-64 z-50 bg-page-overlay-darker overflow-y-scroll backdrop-filter backdrop-blur-lg"
 	>

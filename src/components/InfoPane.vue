@@ -1,6 +1,7 @@
 <template>
 	<Dialog
 		:open="visible"
+		@close="$emit('close')"
 		ref="dialog"
 		class="absolute top-0 right-0 h-screen w-screen lg:w-auto lg:max-w-100 px-8 z-50 bg-page-overlay-darker overflow-y-scroll backdrop-filter backdrop-blur-lg overflow-y-scroll"
 		:class="visible ? `right-0` : `right-full`"
@@ -94,5 +95,5 @@ const props = defineProps({
 	},
 });
 
-defineEmits(['close', 'select']);
+defineEmits(['close']);
 </script>
