@@ -15,6 +15,7 @@ const blava = useTemplateRef('blava');
 
 onMounted(() => {
 	new Blava(blava.value, {
+		style: 'wave',
 		gradient: {
 			from: {
 				color: '#f00',
