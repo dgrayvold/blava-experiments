@@ -10,7 +10,7 @@
 						infoPaneVisible = false;
 					}
 				"
-				class="flex-grow-0 w-8 h-8 z-50 bg-page-overlay-lighter text-blue-400"
+				class="flex-grow-0 w-8 h-8 flex items-center justify-center z-50 bg-page-overlay-lighter text-blue-400 outline-basic"
 				:class="selectorVisible ? `opacity-0` : `opacity-100`"
 				title="Open experiment selector"
 			>
@@ -35,7 +35,7 @@
 						selectorVisible = false;
 					}
 				"
-				class="flex-grow-0 w-8 h-8 pt-0.5 z-50 bg-page-overlay-lighter text-blue-400 text-2xl"
+				class="flex-grow-0 w-8 h-8 flex items-center justify-center z-50 bg-page-overlay-lighter text-blue-400 outline-basic"
 				title="Open info pane"
 			>
 				<i class="i-lucide:info inline-block w-6 h-6" />

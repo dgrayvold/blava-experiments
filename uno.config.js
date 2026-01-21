@@ -3,6 +3,7 @@ import {
 	presetWind4,
 	presetAttributify,
 	transformerDirectives,
+	transformerVariantGroup,
 	presetIcons,
 } from 'unocss';
 
@@ -17,7 +18,7 @@ export default defineConfig({
 		presetIcons(),
 	],
 
-	transformers: [transformerDirectives()],
+	transformers: [transformerDirectives(), transformerVariantGroup()],
 
 	theme: {
 		colors: {
@@ -29,5 +30,10 @@ export default defineConfig({
 				},
 			},
 		},
+	},
+
+	shortcuts: {
+		'outline-basic':
+			'rounded outline-2 outline-solid outline-transparent focus-visible:(outline-blue-400)',
 	},
 });

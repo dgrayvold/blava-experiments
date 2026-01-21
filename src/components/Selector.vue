@@ -8,7 +8,7 @@
 		<DialogPanel>
 			<button
 				@click="$emit('close')"
-				class="block ml-auto mr-0 w-8 h-8 mr-4 my-4 z-50 !text-gray-500 rounded outline-solid outline-2 outline-transparent focus-visible:outline-blue-400"
+				class="block ml-auto mr-0 w-8 h-8 mr-4 my-4 z-50 !text-gray-500 outline-basic"
 				title="Close experiment selector"
 			>
 				<i class="i-lucide:x inline-block w-8 h-8" />
@@ -27,7 +27,7 @@
 					}"
 				>
 					<button
-						class="w-full h-full pl-4 pt-1.5 pb-1 text-left hover:bg-blue-700 focus-visible:bg-blue-700"
+						class="w-full h-full pl-4 pt-1.5 pb-1 text-left hover:bg-blue-700 focus-visible:(bg-blue-700) outline-basic"
 						@click="$emit('select', experiment.name)"
 					>
 						{{ experiment.name }}

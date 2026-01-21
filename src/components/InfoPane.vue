@@ -9,7 +9,7 @@
 		<DialogPanel>
 			<button
 				@click="$emit('close')"
-				class="block ml-auto mr-0 w-8 h-8 mr-4 my-4 z-50 !text-gray-500"
+				class="block ml-auto mr-0 w-8 h-8 mr-4 my-4 z-50 !text-gray-500 outline-basic"
 				title="Close info pane"
 			>
 				<i class="i-lucide:x inline-block w-8 h-8" />
