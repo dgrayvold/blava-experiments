@@ -1,6 +1,8 @@
 <template>
 	<header class="absolute left-0 right-0 w-full z-50">
-		<nav class="flex w-full h-10 max-w-512 mx-auto left-0 right-0">
+		<nav
+			class="flex w-full max-w-512 mx-auto left-0 right-0 p-2 items-center"
+		>
 			<button
 				@click="
 					() => {
@@ -12,16 +14,7 @@
 				:class="selectorVisible ? `opacity-0` : `opacity-100`"
 				title="Open experiment selector"
 			>
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					preserveAspectRatio="xMidYMid meet"
-					viewBox="0 0 24 24"
-				>
-					<path
-						fill="currentColor"
-						d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"
-					/>
-				</svg>
+				<i class="i-lucide:square-menu inline-block w-6 h-6" />
 			</button>
 
 			<h1
@@ -45,7 +38,7 @@
 				class="flex-grow-0 w-8 h-8 pt-0.5 z-50 bg-page-overlay-lighter text-blue-400 text-2xl"
 				title="Open info pane"
 			>
-				?
+				<i class="i-lucide:info inline-block w-6 h-6" />
 			</button>
 		</nav>
 

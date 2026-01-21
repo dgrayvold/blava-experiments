@@ -3,6 +3,7 @@ import {
 	presetWind4,
 	presetAttributify,
 	transformerDirectives,
+	presetIcons,
 } from 'unocss';
 
 export default defineConfig({
@@ -13,6 +14,7 @@ export default defineConfig({
 			},
 		}),
 		presetAttributify(),
+		presetIcons(),
 	],
 
 	transformers: [transformerDirectives()],

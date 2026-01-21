@@ -9,21 +9,10 @@
 		<DialogPanel>
 			<button
 				@click="$emit('close')"
-				class="block w-8 h-8 -ml-1 my-4 z-50 text-gray-500"
+				class="block ml-auto mr-0 w-8 h-8 mr-4 my-4 z-50 !text-gray-500"
 				title="Close info pane"
 			>
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					preserveAspectRatio="xMidYMid meet"
-					viewBox="0 0 16 16"
-				>
-					<path
-						fill="currentColor"
-						fill-rule="evenodd"
-						d="m7.116 8l-4.558 4.558l.884.884L8 8.884l4.558 4.558l.884-.884L8.884 8l4.558-4.558l-.884-.884L8 7.116L3.442 2.558l-.884.884L7.116 8z"
-						clip-rule="evenodd"
-					/>
-				</svg>
+				<i class="i-lucide:x inline-block w-8 h-8" />
 			</button>
 
 			<h2 class="text-2xl text-gray-100 mb-4">Blobby experiments</h2>

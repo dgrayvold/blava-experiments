@@ -3,26 +3,15 @@
 		:open="visible"
 		@close="$emit('close')"
 		ref="dialog"
-		class="absolute top-0 left-0 h-screen w-screen lg:w-auto min-w-64 z-50 bg-page-overlay-darker overflow-y-scroll backdrop-filter backdrop-blur-lg"
+		class="absolute top-0 left-0 h-screen w-screen lg:w-auto lg:max-w-100 px-8 z-50 bg-page-overlay-darker overflow-y-scroll backdrop-filter backdrop-blur-lg overflow-y-scroll"
 	>
 		<DialogPanel>
 			<button
 				@click="$emit('close')"
-				class="block ml-auto mr-0 w-8 h-8 mr-4 my-4 z-50 !text-gray-500"
+				class="block ml-auto mr-0 w-8 h-8 mr-4 my-4 z-50 !text-gray-500 rounded outline-solid outline-2 outline-transparent focus-visible:outline-blue-400"
 				title="Close experiment selector"
 			>
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					preserveAspectRatio="xMidYMid meet"
-					viewBox="0 0 16 16"
-				>
-					<path
-						fill="currentColor"
-						fill-rule="evenodd"
-						d="m7.116 8l-4.558 4.558l.884.884L8 8.884l4.558 4.558l.884-.884L8.884 8l4.558-4.558l-.884-.884L8 7.116L3.442 2.558l-.884.884L7.116 8z"
-						clip-rule="evenodd"
-					/>
-				</svg>
+				<i class="i-lucide:x inline-block w-8 h-8" />
 			</button>
 
 			<h2 class="text-white text-2xl mb-4 px-4">Choose experiment</h2>
