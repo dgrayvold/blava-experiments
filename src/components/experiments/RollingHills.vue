@@ -1,15 +1,15 @@
 <template>
 	<div>
 		<canvas
-			v-for="i in 10"
-			:ref="el => blavas.push(el)"
+			v-for="_ in 10"
+			ref="blavas"
 			class="absolute left-0 bottom-0 top-1/4 w-full h-full"
 		/>
 	</div>
 </template>
 
-<script setup>
-import { onMounted, ref } from 'vue';
+<script setup lang="ts">
+import { onMounted, useTemplateRef } from 'vue';
 import { Blava } from 'blava';
 
 defineOptions({
@@ -17,10 +17,14 @@ defineOptions({
 	creator: 'Daniel Grayvold',
 });
 
-const blavas = ref([]);
+const blavas = useTemplateRef('blavas');
 
 onMounted(() => {
-	blavas.value.forEach((canvas, index) => {
+	blavas.value?.forEach((canvas, index) => {
+		if (!(canvas instanceof HTMLCanvasElement)) {
+			return;
+		}
+
 		new Blava(canvas, {
 			style: 'wave',
 			seed: `waveform-${index}`,

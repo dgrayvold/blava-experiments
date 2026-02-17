@@ -2,7 +2,7 @@
 	<canvas ref="blava" class="absolute -left-1/2 w-[200%] h-[200%]" />
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { onMounted, useTemplateRef } from 'vue';
 import { Blava } from 'blava';
 
@@ -14,7 +14,7 @@ defineOptions({
 const blava = useTemplateRef('blava');
 
 onMounted(() => {
-	new Blava(blava.value, {
+	new Blava(blava.value!, {
 		style: 'blob',
 		pointCount: 300,
 		gradient: {

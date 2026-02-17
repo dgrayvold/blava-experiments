@@ -43,7 +43,7 @@
 		</nav>
 
 		<div class="top-10 text-center text-lg text-blue-300 z-50">
-			{{ currentExperiment }}
+			{{ currentExperimentName }}
 			<span v-show="currentExperimentCreator">
 				— {{ currentExperimentCreator }}
 			</span>
@@ -52,14 +52,14 @@
 	<main>
 		<section class="absolute w-screen h-screen overflow-hidden">
 			<transition>
-				<component :is="experimentsMap.get(currentExperiment)" />
+				<component :is="experimentsMap.get(currentExperimentName)" />
 			</transition>
 		</section>
 	</main>
 
 	<Selector
-		:experiments="experimentsData"
-		:current-experiment="currentExperiment"
+		:experiments="experimentEntries"
+		:current-experiment-name="currentExperimentName"
 		:visible="selectorVisible"
 		@close="selectorVisible = false"
 		@select="setCurrentExperiment"
@@ -68,13 +68,20 @@
 	<InfoPane :visible="infoPaneVisible" @close="infoPaneVisible = false" />
 </template>
 
-<script setup>
+<script lang="ts">
+type BlavaExperimentComponentModule = {
+	default: BlavaExperiment;
+};
+</script>
+
+<script setup lang="ts">
 import { computed, ref } from 'vue';
 import Selector from '@/components/Selector.vue';
 import InfoPane from '@/components/InfoPane.vue';
+import type { BlavaExperiment } from './types';
 
 const experiments = Object.values(
-	import.meta.glob(
+	import.meta.glob<BlavaExperimentComponentModule>(
 		[
 			'./components/experiments/*.vue',
 			'!./components/experiments/_ExperimentTemplate.vue',
@@ -86,19 +93,16 @@ const experiments = Object.values(
 /**
  * The experiment currently displayed
  */
-const currentExperiment = ref(experiments[0].default.name);
+const currentExperimentName = ref(experiments[0]?.default.name);
 
 /**
  * The names of all available experiments and their creators
  */
-const experimentsData = computed(() => {
+const experimentEntries = computed(() => {
 	return experiments.map(experiment => {
 		return {
 			name: experiment.default.name,
-			creator:
-				experiment.default.creator == 'Daniel Grayvold'
-					? null
-					: experiment.default.creator,
+			creator: experiment.default.creator,
 		};
 	});
 });
@@ -130,12 +134,16 @@ const experimentsMap = computed(() => {
  * The name of the current experiment's creator, or null if it's Daniel or not added
  */
 const currentExperimentCreator = computed(() => {
-	const creator = experiments.find(experiment => {
-		return experiment.default.name == currentExperiment.value;
-	}).default.creator;
+	if (!currentExperimentName.value) {
+		return '';
+	}
 
-	if (creator === undefined || creator == 'Daniel Grayvold') {
-		return null;
+	const creator = experiments.find(experiment => {
+		return experiment.default.name === currentExperimentName.value;
+	})?.default.creator;
+
+	if (!creator || creator === 'Daniel Grayvold') {
+		return '';
 	}
 
 	return creator;
@@ -143,11 +151,9 @@ const currentExperimentCreator = computed(() => {
 
 /**
  * Set the current experiment on display
- *
- * @param {String} experiment The name of the experiment to display
  */
-function setCurrentExperiment(experiment) {
-	currentExperiment.value = experiment;
+function setCurrentExperiment(name: string) {
+	currentExperimentName.value = name;
 	selectorVisible.value = false;
 }
 </script>

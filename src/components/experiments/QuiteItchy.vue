@@ -2,7 +2,7 @@
 	<canvas ref="blava" class="absolute bottom-0 w-full h-1/2 min-h-32" />
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { onMounted, useTemplateRef } from 'vue';
 import { Blava } from 'blava';
 
@@ -14,7 +14,7 @@ defineOptions({
 const blava = useTemplateRef('blava');
 
 onMounted(() => {
-	new Blava(blava.value, {
+	new Blava(blava.value!, {
 		style: 'wave',
 		gradient: {
 			from: {

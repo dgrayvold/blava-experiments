@@ -23,7 +23,7 @@
 					class="text-xl"
 					:class="{
 						'bg-gradient-to-tr from-true-gray-800 to-true-gray-900 text-blue-500':
-							currentExperiment == experiment.name,
+							currentExperimentName === experiment.name,
 					}"
 				>
 					<button
@@ -31,7 +31,10 @@
 						@click="$emit('select', experiment.name)"
 					>
 						{{ experiment.name }}
-						<div v-show="experiment.creator" class="text-sm">
+						<div
+							v-show="experiment.creator !== 'Daniel Grayvold'"
+							class="text-sm"
+						>
 							{{ experiment.creator }}
 						</div>
 					</button>
@@ -41,34 +44,15 @@
 	</Dialog>
 </template>
 
-<script setup>
+<script setup lang="ts">
+import type { BlavaExperiment } from '@/types';
 import { Dialog, DialogPanel } from '@headlessui/vue';
 
-defineProps({
-	/**
-	 * The active experiment on display
-	 */
-	currentExperiment: {
-		type: String,
-		default: null,
-	},
-
-	/**
-	 * The full list of experiments to choose from
-	 */
-	experiments: {
-		type: Array,
-		default: () => [],
-	},
-
-	/**
-	 * Whether the selector is active
-	 */
-	visible: {
-		type: Boolean,
-		default: false,
-	},
-});
+const { experiments = [] } = defineProps<{
+	currentExperimentName?: string;
+	experiments: BlavaExperiment[];
+	visible: boolean;
+}>();
 
 defineEmits(['close', 'select']);
 </script>

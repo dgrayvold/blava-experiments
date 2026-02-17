@@ -8,7 +8,8 @@
 	</div>
 </template>
 
-<script setup>
+<script setup lang="ts">
+import type { BlavaOptions } from 'blava';
 import { onMounted, useTemplateRef } from 'vue';
 import { Blava } from 'blava';
 
@@ -22,9 +23,9 @@ const blavas = useTemplateRef('blavas');
 const canvasHeightClasses = ['h-75%', 'h-70%', 'h-55%', 'h-35%'];
 
 onMounted(() => {
-	const commonConfig = {
+	const commonConfig: BlavaOptions = {
 		style: 'wave',
-		movementSpeed: 0.0013,
+		movementSpeed: 0.0005,
 	};
 
 	const blavaConfigs = [
@@ -34,12 +35,9 @@ onMounted(() => {
 		{ gradient: '#015ff7', seed: 'n9ev92e8jfw9j' },
 	];
 
-	blavaConfigs.forEach(
-		(config, index) =>
-			new Blava(blavas.value[index], {
-				...commonConfig,
-				...config,
-			}),
+	blavas.value?.forEach(
+		(canvas, index) =>
+			new Blava(canvas, { ...commonConfig, ...blavaConfigs[index] }),
 	);
 });
 </script>

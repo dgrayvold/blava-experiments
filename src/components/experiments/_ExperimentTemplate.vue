@@ -2,7 +2,7 @@
 	<canvas ref="blava" class="w-full h-full" />
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { onMounted, useTemplateRef } from 'vue';
 import { Blava } from 'blava';
 
@@ -14,7 +14,7 @@ defineOptions({
 const blava = useTemplateRef('blava');
 
 onMounted(() => {
-	new Blava(blava.value, {
+	new Blava(blava.value!, {
 		// Your options here
 		// https://blava.greatnews.life for full list of config properties
 	});

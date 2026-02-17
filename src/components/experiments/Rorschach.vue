@@ -9,7 +9,8 @@
 	</div>
 </template>
 
-<script setup>
+<script setup lang="ts">
+import type { BlavaOptions } from 'blava';
 import { onMounted, useTemplateRef } from 'vue';
 import { Blava } from 'blava';
 
@@ -23,10 +24,9 @@ const blavas = useTemplateRef('blavas');
 const blavaClassSets = ['', 'right-0 transform rotate-y-180'];
 
 onMounted(() => {
-	const sharedOptions = {
+	const sharedOptions: BlavaOptions = {
 		gradient: '#efefff',
 		seed: 'blava',
-		pointCount: 20,
 		points: [
 			{ x: 0, y: 0, animated: false },
 			{ x: 60, y: 0, animated: { x: true, y: true } },
@@ -53,6 +53,6 @@ onMounted(() => {
 		movementSpeed: 0.000_1,
 	};
 
-	blavas.value.forEach(blava => new Blava(blava, sharedOptions));
+	blavas.value?.forEach(blava => new Blava(blava, sharedOptions));
 });
 </script>

@@ -1,10 +1,11 @@
 <template>
 	<div>
-		<canvas v-for="i in 4" ref="blavas" />
+		<canvas v-for="_ in 4" ref="blavas" />
 	</div>
 </template>
 
-<script setup>
+<script setup lang="ts">
+import type { BlavaOptions } from 'blava';
 import { onMounted, useTemplateRef } from 'vue';
 import { Blava } from 'blava';
 
@@ -16,7 +17,7 @@ defineOptions({
 const blavas = useTemplateRef('blavas');
 
 onMounted(() => {
-	const sharedOptions = {
+	const sharedOptions: BlavaOptions = {
 		points: [
 			{ x: 20, y: 100, animated: false },
 			{ x: 80, y: 100, animated: false },
@@ -38,7 +39,7 @@ onMounted(() => {
 
 	const gradients = ['#ff5139', '#ffff39', '#51ff53', '#4c53ff'];
 
-	blavas.value.forEach((blava, index) => {
+	blavas.value?.forEach((blava, index) => {
 		new Blava(blava, { ...sharedOptions, gradient: gradients[index] });
 	});
 });

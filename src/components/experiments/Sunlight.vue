@@ -8,7 +8,8 @@
 	</div>
 </template>
 
-<script setup>
+<script setup lang="ts">
+import type { BlavaOptions } from 'blava';
 import { onMounted, useTemplateRef } from 'vue';
 import { Blava } from 'blava';
 
@@ -27,7 +28,7 @@ const blavaClassSets = [
 const blavas = useTemplateRef('blavas');
 
 onMounted(() => {
-	const sharedOptions = {
+	const sharedOptions: BlavaOptions = {
 		style: 'blob',
 		seed: 'blava',
 		pointCount: 100,
@@ -65,8 +66,8 @@ onMounted(() => {
 		},
 	];
 
-	blavaConfigs.forEach((config, index) => {
-		new Blava(blavas.value[index], { ...sharedOptions, ...config });
+	blavas.value?.forEach((canvas, index) => {
+		new Blava(canvas, { ...sharedOptions, ...blavaConfigs[index] });
 	});
 });
 </script>

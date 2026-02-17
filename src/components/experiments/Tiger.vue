@@ -5,7 +5,7 @@
 	/>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { onMounted, useTemplateRef } from 'vue';
 import { Blava } from 'blava';
 
@@ -17,7 +17,7 @@ defineOptions({
 const blava = useTemplateRef('blava');
 
 onMounted(() => {
-	new Blava(blava.value, {
+	new Blava(blava.value!, {
 		style: 'blob',
 		pointCount: 50,
 		seed: 'blava',

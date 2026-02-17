@@ -71,18 +71,12 @@
 	</Dialog>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { Dialog, DialogPanel } from '@headlessui/vue';
 
-const props = defineProps({
-	/**
-	 * Whether the pane is active
-	 */
-	visible: {
-		type: Boolean,
-		default: false,
-	},
-});
+const { visible = false } = defineProps<{
+	visible: boolean;
+}>();
 
 defineEmits(['close']);
 </script>
